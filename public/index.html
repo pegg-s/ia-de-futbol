@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fútbol Total AI</title>
+<style>
+:root{--bg:#07120f;--panel:#0e201a;--panel2:#132a22;--green:#20d887;--text:#effaf4;--muted:#9bb5a8;--line:#244438}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 20% 0%,#123d2b 0,#07120f 38%,#050b09 100%);color:var(--text);font:15px/1.5 system-ui,Arial;min-height:100vh}
+header{padding:18px max(18px,calc((100% - 1100px)/2));display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line);background:#07120fdd;position:sticky;top:0;z-index:2;backdrop-filter:blur(12px)}
+.brand{display:flex;gap:12px;align-items:center}.logo{width:42px;height:42px;border-radius:14px;background:linear-gradient(135deg,var(--green),#087e50);display:grid;place-items:center;font-size:23px}.brand b{font-size:19px}.brand small{display:block;color:var(--muted);font-size:12px}
+button{border:1px solid var(--line);background:var(--panel2);color:var(--text);border-radius:11px;padding:10px 14px;cursor:pointer;font-weight:650}button:hover{border-color:var(--green)}button.primary{background:var(--green);border-color:var(--green);color:#052116}button:disabled{opacity:.5;cursor:wait}
+main{max-width:1100px;margin:auto;padding:28px 18px 40px}.hero{margin:10px 0 22px}.eyebrow{color:var(--green);font-weight:800;text-transform:uppercase;font-size:11px;letter-spacing:1.7px}.hero h1{font-size:clamp(27px,5vw,42px);line-height:1.1;margin:8px 0}.hero p{color:var(--muted);max-width:720px;margin:0}
+.layout{display:grid;grid-template-columns:270px 1fr;gap:18px}.side,.chat{background:#0b1b15dd;border:1px solid var(--line);border-radius:18px;overflow:hidden}.side{padding:18px;height:max-content}.side h3{margin:0 0 10px;font-size:14px}.side p{font-size:12px;color:var(--muted);margin:0 0 16px}.quick{display:grid;gap:8px}.quick button{text-align:left;font-size:13px;font-weight:500;padding:11px}.quick button span{color:var(--green);margin-right:7px}.scope{margin-top:20px;padding-top:16px;border-top:1px solid var(--line);font-size:12px;color:var(--muted)}.scope strong{color:var(--text)}
+.chat{display:flex;flex-direction:column;min-height:600px}.chathead{padding:15px 18px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between}.online{font-size:12px;color:var(--green)}.messages{padding:20px;display:flex;flex-direction:column;gap:14px;min-height:430px;max-height:62vh;overflow:auto}.msg{max-width:90%;padding:13px 15px;border-radius:15px;white-space:pre-wrap;overflow-wrap:anywhere}.bot{align-self:flex-start;background:var(--panel2);border:1px solid var(--line);border-top-left-radius:4px}.user{align-self:flex-end;background:#145d3e;border:1px solid #23875c;border-top-right-radius:4px}.msg small{display:block;color:var(--muted);font-size:10px;margin-bottom:5px}.composer{border-top:1px solid var(--line);padding:14px;display:flex;gap:9px}.composer textarea{resize:vertical;min-height:48px;max-height:130px;flex:1;background:#07130e;color:var(--text);border:1px solid var(--line);border-radius:12px;padding:12px;font:inherit;outline:none}.composer textarea:focus{border-color:var(--green)}.hint{padding:0 16px 13px;color:var(--muted);font-size:11px}
+footer{color:var(--muted);font-size:11px;text-align:center;margin:20px 0}.quick button{width:100%}
+@media(max-width:760px){.layout{grid-template-columns:1fr}.side{order:2}.chat{min-height:570px}.messages{max-height:55vh}.quick{grid-template-columns:1fr 1fr}.brand b{font-size:16px}}
+</style></head><body>
+<header><div class="brand"><div class="logo">⚽</div><div><b>FÚTBOL TOTAL AI</b><small>La conversación del fútbol profesional</small></div></div><span class="online">● IA conectada al servidor</span></header>
+<main><section class="hero"><div class="eyebrow">Latinoamérica · Europa · Fútbol profesional</div><h1>Todo el fútbol, en una conversación.</h1><p>Pregunta por clubes, jugadores, entrenadores, torneos, historia, estadísticas, fichajes y partidos.</p></section>
+<div class="layout"><aside class="side"><h3>Preguntas rápidas</h3><p>Selecciona un ejemplo para empezar.</p><div class="quick">
+<button data-q="Hazme una ficha completa del Real Madrid: historia, títulos, estadio, entrenador, plantilla y estilo de juego."><span>🏟</span>Ficha de un club</button>
+<button data-q="Haz una ficha completa de Lionel Messi: trayectoria, clubes, títulos, estadísticas y estilo de juego."><span>👤</span>Ficha de jugador</button>
+<button data-q="Explícame la historia, formato y clubes destacados de la Copa Libertadores."><span>🏆</span>Un torneo</button>
+<button data-q="Compara al FC Barcelona y al Real Madrid en historia, títulos y filosofía."><span>⚔</span>Comparar clubes</button>
+<button data-q="Analiza los factores tácticos y estadísticos que se deben revisar antes de un partido."><span>📊</span>Análisis de partido</button>
+<button data-q="Explícame las posiciones y funciones de los jugadores en el fútbol."><span>📘</span>Reglas y táctica</button>
+</div><div class="scope"><strong>Especialidad:</strong><br>Fútbol profesional de Latinoamérica y Europa: clubes, selecciones, ligas, copas, jugadores, entrenadores, récords, tácticas y estadísticas.<br><br><strong>Precisión:</strong> distinguirá datos históricos de actuales y señalará cuando no pueda verificar una cifra.</div></aside>
+<section class="chat"><div class="chathead"><strong>Asistente futbolero</strong><span class="online" id="status">● Listo</span></div>
+<div class="messages" id="messages"><div class="msg bot"><small>FÚTBOL TOTAL AI</small>¡Hola! Soy tu asistente especializado en fútbol profesional de Latinoamérica y Europa. ⚽
+
+Pregúntame por un club, jugador, torneo, temporada o partido. Puedo investigar información reciente cuando esté disponible.</div></div>
+<div class="composer"><textarea id="question" placeholder="Escribe tu pregunta sobre fútbol…" rows="2"></textarea><button class="primary" id="sendBtn">Enviar ➤</button></div><div class="hint">Enter para enviar · Shift + Enter para nueva línea · No compartas información personal.</div></section></div>
+<footer>Fútbol Total AI · Proyecto independiente, no afiliado a clubes ni federaciones.</footer></main>
+<script>
+const $=s=>document.querySelector(s), messages=$('#messages'), question=$('#question');
+const systemPrompt=`Eres FÚTBOL TOTAL AI, un asistente especializado exclusivamente en fútbol profesional de Latinoamérica y Europa. Responde en español. Puedes explicar historia y actualidad de clubes, jugadores, entrenadores, ligas, copas, selecciones, tácticas, reglas y estadísticas. Para clubes, incluye cuando sea pertinente fundación, país, estadio, historia, títulos, entrenadores, plantilla, temporadas, récords y estilo de juego. Para jugadores, incluye trayectoria por clubes y temporadas, selección, posición, características, títulos, premios y estadísticas verificables. Mantente dentro del fútbol profesional de Latinoamérica y Europa. Si preguntan algo ajeno, explica brevemente que tu especialidad es el fútbol profesional de esas regiones. No inventes estadísticas, fichajes, lesiones, alineaciones ni resultados. Distingue datos históricos de actuales; si no puedes verificar un dato reciente, dilo. Usa fechas y temporadas concretas cuando sea posible.`;
+function addMsg(t,who){const d=document.createElement('div');d.className='msg '+who;const s=document.createElement('small');s.textContent=who==='user'?'TÚ':'FÚTBOL TOTAL AI';d.append(s,document.createTextNode(t));messages.appendChild(d);messages.scrollTop=messages.scrollHeight;}
+async function send(){const q=question.value.trim();if(!q)return;addMsg(q,'user');question.value='';$('#sendBtn').disabled=true;$('#status').textContent='● Consultando…';
+try{const r=await fetch('/api/chat',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({question:q,system:systemPrompt})});const data=await r.json();if(!r.ok)throw new Error(data.error||'Error del servidor ('+r.status+')');addMsg(data.answer,'bot');}
+catch(e){addMsg('No pude obtener respuesta: '+e.message+'. Comprueba que el servidor esté publicado y configurado.','bot');}
+finally{$('#sendBtn').disabled=false;$('#status').textContent='● Listo';question.focus();}}
+$('#sendBtn').onclick=send;question.addEventListener('keydown',e=>{if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();send();}});
+document.querySelectorAll('[data-q]').forEach(b=>b.onclick=()=>{question.value=b.dataset.q;send();});
+</script></body></html>
